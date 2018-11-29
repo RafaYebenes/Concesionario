@@ -1,11 +1,14 @@
 package com.example.zafiro2.concesionario;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.example.zafiro2.concesionario.Listas.ListaCoches;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-       /* switch (id) {
-            case R.id.item_personas:
-
-                break;
+       /* switch (id) { //Al hacer clic en coches nuevos empieza la activada y manda el entero 0 que recibira la clase ListaCoches, 0 siguinifa coches nuevos, 1 coches de ocasion
+            case R.id.item_personas:*/
+        Intent intent = new Intent(this,ListaCoches.class);
+        intent.putExtra("band",0);
+        startActivity(intent);
+                /*break;
             case R.id.item_articulos:
 
                 break;

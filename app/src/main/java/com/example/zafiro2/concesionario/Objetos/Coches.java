@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario;
+package com.example.zafiro2.concesionario.Objetos;
 
 public class Coches {
 
@@ -19,7 +19,7 @@ public class Coches {
     }
 
     public String getMarca() {
-        return marca;
+        return this.marca;
     }
 
     public void setMarca(String marca) {

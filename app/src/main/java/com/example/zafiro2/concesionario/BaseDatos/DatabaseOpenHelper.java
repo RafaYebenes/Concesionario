@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario;
+package com.example.zafiro2.concesionario.BaseDatos;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class DatabaseOpenHelper extends SQLiteAssetHelper {
 
 
-    private static final String DATABASE_NAME = "bd1";
+    private static final String DATABASE_NAME = "concesionario";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseOpenHelper(Context context){
