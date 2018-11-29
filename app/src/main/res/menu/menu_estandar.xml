@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mCoches_Nuevos"
+        android:title="Coches Nuevos" />
+    <item
+        android:id="@+id/mCoches_Ocasion"
+        android:title="Coches Ocasión" />
+    <item
+        android:id="@+id/mExtras"
+        android:title="Extras" />
+    <item
+        android:id="@+id/mConocenos"
+        android:title="Conocenos" />
+</menu>

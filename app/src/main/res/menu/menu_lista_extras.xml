@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    //Este icono aparece cuando hacemos clic en un elemento del listView de los extras
+
+    <item
+        android:id="@+id/mEliminarExtra"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/app_name"
+        android:visible="false"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/mCoches_Nuevos_Extras"
+        android:title="Coches Nuevos" />
+    <item
+        android:id="@+id/mCoches_Ocasion_Extras"
+        android:title="Coches Ocasión" />
+    <item
+        android:id="@+id/mExtras_Extras"
+        android:title="Extras" />
+    <item
+        android:id="@+id/mConocenos_Extras"
+        android:title="Conocenos" />
+
+</menu>
