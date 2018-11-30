@@ -60,7 +60,11 @@ public class AdaptadorListaCoches extends BaseAdapter{
 
             if (convertView == null) {
                 LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+<<<<<<< HEAD
                 v = inf.inflate(R.layout.adaptador_lista_coches, null);
+=======
+                v = inf.inflate(R.layout.activity_lista_coches, null);//Cambiar el xml por el del adaptador
+>>>>>>> 3915a641f66e0994f2ed3f2d54911805ade76118
             }
 
             Coches dir = items.get(position);
