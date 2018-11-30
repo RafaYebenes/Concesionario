@@ -3,6 +3,7 @@ package com.example.zafiro2.concesionario.Objetos;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,31 +58,32 @@ public class AdaptadorListaCoches extends BaseAdapter{
 
             if (convertView == null) {
                 LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = inf.inflate(R.layout.activity_lista_coches, null);
+                v = inf.inflate(R.layout.adaptador_lista_coches, null);
             }
 
             Coches dir = items.get(position);
 
             //enlazar cada elemento de tu layout a cada atributo de la clase
-            TextView txvMarca = v.findViewById(R.id.txvMarcalvl);
-            if(dir!=null) {
-                String marca = dir.getMarca();
-                Toast.makeText(activity, marca, Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(activity, "Fallo al crear", Toast.LENGTH_SHORT).show();
-            }
+            TextView txvMarca = v.findViewById(R.id.txvMarcalvl1);
+
+
+
+            txvMarca.setText(dir.getMarca());
+
 
             TextView txvModelo = v.findViewById(R.id.txvModelo);
-            //txvModelo.setText(dir.getModelo());
+            txvModelo.setText(dir.getModelo());
 
+
+            String precio = Float.toString(dir.getPrecio());
             TextView txvPrecio = v.findViewById(R.id.txvPrecio);
-            //txvPrecio.setText(Float.toString(dir.getPrecio()));
+            txvPrecio.setText(precio);
 
             String rutaImg = "R.drawable.";
-           // rutaImg = rutaImg + dir.getImagen();
+            rutaImg = rutaImg + dir.getImagen()+"."+dir.getImagen()+".png";
 
             ImageView imvImagen = v.findViewById(R.id.imvImagen);
-           // imvImagen.setImageDrawable(Drawable.createFromPath(rutaImg)); //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
+            //imvImagen.setImageURI(Uri.parse(rutaImg)); //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
 
 
             return v;

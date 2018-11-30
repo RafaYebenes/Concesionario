@@ -20,6 +20,7 @@ public class ListaCoches extends AppCompatActivity {
 
     ArrayList<Coches> arrayCoches;
     FloatingActionButton fba;
+    AdaptadorListaCoches adaptadorListaCoches;
     int band = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +37,14 @@ public class ListaCoches extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
 
-        //if(band==0){
+        if(band==0){
             arrayCoches = databaseAccess.todosLosCochesNuevos();
-        //}
-        /*else{
+        }
+        else{
             arrayCoches = databaseAccess.todosLosCochesOcasion();
-        }*/
+        }
         if(arrayCoches!=null) { //Prueba de entrega de datos desde la bbdd
-            AdaptadorListaCoches adaptadorListaCoches = new AdaptadorListaCoches(this, arrayCoches);
+            adaptadorListaCoches = new AdaptadorListaCoches(this, arrayCoches);
             lvCoches.setAdapter(adaptadorListaCoches);
         }
         else{

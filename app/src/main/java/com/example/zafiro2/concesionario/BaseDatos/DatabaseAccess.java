@@ -42,7 +42,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-               arrayCoches.add(new Coches(c.getString(1),c.getString(1),c.getString(1),c.getString(1),c.getFloat(4),c.getInt(5)));
+               arrayCoches.add(new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
@@ -57,7 +57,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-                arrayCoches.add(new Coches(c.getString(1),c.getString(1),c.getString(1),c.getString(1),c.getFloat(4),c.getInt(5)));
+                arrayCoches.add(new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
