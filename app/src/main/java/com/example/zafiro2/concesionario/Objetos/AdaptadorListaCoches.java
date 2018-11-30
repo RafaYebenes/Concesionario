@@ -2,6 +2,7 @@ package com.example.zafiro2.concesionario.Objetos;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.R;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AdaptadorListaCoches extends BaseAdapter{
@@ -80,10 +82,12 @@ public class AdaptadorListaCoches extends BaseAdapter{
             txvPrecio.setText(precio);
 
             String rutaImg = "R.drawable.";
-            rutaImg = rutaImg + dir.getImagen()+"."+dir.getImagen()+".png";
+            rutaImg = rutaImg + dir.getImagen();
+
+
 
             ImageView imvImagen = v.findViewById(R.id.imvImagen);
-            //imvImagen.setImageURI(Uri.parse(rutaImg)); //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
+            //imvImagen.setImageDrawable(ruta);; //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
 
 
             return v;

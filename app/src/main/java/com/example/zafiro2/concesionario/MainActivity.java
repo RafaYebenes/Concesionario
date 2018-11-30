@@ -34,14 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-       /* switch (id) { //Al hacer clic en coches nuevos empieza la activada y manda el entero 0 que recibira la clase ListaCoches, 0 siguinifa coches nuevos, 1 coches de ocasion
-            case R.id.item_personas:*/
-        Intent intent = new Intent(this,ListaCoches.class);
-        intent.putExtra("band",0);
-        startActivity(intent);
-                /*break;
-            case R.id.item_articulos:
-
+       switch (id) { //Al hacer clic en coches nuevos empieza la activada y manda el entero 0 que recibira la clase ListaCoches, 0 siguinifa coches nuevos, 1 coches de ocasion
+            case R.id.mCoches_Nuevos:
+            Intent intent = new Intent(this,ListaCoches.class);
+            intent.putExtra("band",0);
+            startActivity(intent);
+            break;
+            case R.id.mCoches_Ocasion:
+            Intent intent2 = new Intent(this,ListaCoches.class);
+            intent2.putExtra("band",1);
+            startActivity(intent2);
                 break;
 
         }//fin switch*/
