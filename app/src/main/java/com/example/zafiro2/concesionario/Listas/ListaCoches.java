@@ -35,6 +35,8 @@ public class ListaCoches extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), DatosCoches.class);
+                intent.putExtra("pos",position);
+                startActivityForResult(intent,1);
             }
         });
 
