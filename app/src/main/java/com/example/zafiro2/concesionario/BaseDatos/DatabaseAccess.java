@@ -79,5 +79,21 @@ public class DatabaseAccess {
         c.close();
         return arrayExtras;
     }
+    public Coches traerUnCoche(int pos){
+
+        Cursor c;
+        Coches coche = new Coches();
+
+        c = database.rawQuery("select * from coches where id ="+pos, null);
+
+        if(c.moveToFirst()){
+            do{
+                coche = new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+            }while (c.moveToNext());
+        }
+        c.close();
+        return coche;
+
+    }
 
 }
