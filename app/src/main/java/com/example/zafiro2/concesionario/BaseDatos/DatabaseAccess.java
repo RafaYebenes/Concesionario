@@ -3,6 +3,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.Objetos.Extras;
@@ -83,14 +84,15 @@ public class DatabaseAccess {
 
         Cursor c;
         Coches coche = new Coches();
-
-        c = database.rawQuery("select * from coches where id ="+pos, null);
+        String posicion = Integer.toString(pos);
+        c = database.rawQuery("select * from coches where id ="+posicion, null);
 
         if(c.moveToFirst()){
             do{
-                coche = new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+                coche = new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6));
             }while (c.moveToNext());
         }
+
         c.close();
         return coche;
 

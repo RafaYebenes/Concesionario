@@ -3,6 +3,8 @@ package com.example.zafiro2.concesionario.Objetos;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.R;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -60,11 +63,10 @@ public class AdaptadorListaCoches extends BaseAdapter{
 
             if (convertView == null) {
                 LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-<<<<<<< HEAD
+
                 v = inf.inflate(R.layout.adaptador_lista_coches, null);
-=======
-                v = inf.inflate(R.layout.activity_lista_coches, null);//Cambiar el xml por el del adaptador
->>>>>>> 3915a641f66e0994f2ed3f2d54911805ade76118
+
+
             }
 
             Coches dir = items.get(position);
@@ -85,15 +87,14 @@ public class AdaptadorListaCoches extends BaseAdapter{
             TextView txvPrecio = v.findViewById(R.id.txvPrecio);
             txvPrecio.setText(precio);
 
-            String rutaImg = "R.drawable.";
-            rutaImg = rutaImg + dir.getImagen();
+
 
 
 
             ImageView imvImagen = v.findViewById(R.id.imvImagen);
-            //imvImagen.setImageDrawable(ruta);; //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
-
-
+            int id = v.getResources().getIdentifier(dir.getImagen(), "drawable", v.getContext().getPackageName());
+            Drawable drawable = v.getResources().getDrawable(id); //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
+            imvImagen.setImageDrawable(drawable);
             return v;
         }
 }

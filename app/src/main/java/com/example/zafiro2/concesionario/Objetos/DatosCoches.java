@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario;
+package com.example.zafiro2.concesionario.Objetos;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,13 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
-import com.example.zafiro2.concesionario.Listas.ListaCoches;
-import com.example.zafiro2.concesionario.Objetos.Coches;
+import com.example.zafiro2.concesionario.R;
 
 import static android.view.View.VISIBLE;
 
@@ -39,6 +38,7 @@ public class DatosCoches extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         cargarObejos();
+        cargarDatos(id);
     }
 
     @Override
@@ -75,20 +75,23 @@ public class DatosCoches extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
         Coches coche = databaseAccess.traerUnCoche(pos);
-        edtDatosMarca.setText(coche.getMarca());
+        if(coche==null){
+            Toast.makeText(this, "puta bida", Toast.LENGTH_SHORT).show();
+        }
+        /*edtDatosMarca.setText(coche.getMarca());
         edtDatosModelo.setText(coche.getModelo());
         edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
-        edtDatosDescripcion.setText(coche.getDescripcion());
+       // edtDatosDescripcion.setText(coche.getDescripcion());*/
 
     }
     public void cargarObejos(){
-        imvCoche = findViewById(R.id.imvCoche);
+        imvCoche = findViewById(R.id.imvCocheDatos);
         edtDatosMarca = findViewById(R.id.edtDatosMarca);
         edtDatosModelo = findViewById(R.id.edtDatosModelo);
         edtDatosPrecio = findViewById(R.id.edtDatosPrecio);
         fbaGuardar = findViewById(R.id.fbaGuardar);
 
-        habilitarEdicionDatos(false);
+        //habilitarEdicionDatos(false);
 
     }
 
