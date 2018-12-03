@@ -37,8 +37,9 @@ public class ListaCoches extends AppCompatActivity {
         lvCoches.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int[] posYBand = new int[]{position,band};
                 Intent intent = new Intent(getApplicationContext(), DatosCoches.class);
-                intent.putExtra("pos",position);
+                intent.putExtra("pos",posYBand);
                 startActivityForResult(intent,1);
             }
         });
@@ -86,18 +87,49 @@ public class ListaCoches extends AppCompatActivity {
 
         switch (id) { //Al hacer clic en coches nuevos empieza la activada y manda el entero 0 que recibira la clase ListaCoches, 0 siguinifa coches nuevos, 1 coches de ocasion
             case R.id.mCoches_Nuevos:
-                Intent intent = new Intent(this,ListaCoches.class);
-                intent.putExtra("band",0);
-                startActivity(intent);
+                band=0;
+                actualizarObjetos();
+                Toast.makeText(this, Integer.toString(band), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mCoches_Ocasion:
-                Intent intent2 = new Intent(this,ListaCoches.class);
-                intent2.putExtra("band",1);
-                startActivity(intent2);
+                band=1;
+                actualizarObjetos();
+                Toast.makeText(this, Integer.toString(band), Toast.LENGTH_SHORT).show();
                 break;
 
         }//fin switch*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void actualizarObjetos(){
+        Toolbar toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
+        databaseAccess.open();
+        if(band==0){
+            arrayCoches = databaseAccess.todosLosCochesNuevos();
+            toolbar3.setTitle("Coches Nuevos");
+        }
+        else{
+            arrayCoches = databaseAccess.todosLosCochesOcasion();
+            toolbar3.setTitle("Coches de Ocasión");
+        }
+        if(arrayCoches!=null) { //Prueba de entrega de datos desde la bbdd
+            adaptadorListaCoches = new AdaptadorListaCoches(this, arrayCoches);
+            lvCoches.setAdapter(adaptadorListaCoches);
+        }
+        else{
+            Toast.makeText(this, "Fallo critico", Toast.LENGTH_SHORT).show();
+        }
+        setSupportActionBar(toolbar3);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if ((requestCode == 1) && (resultCode == RESULT_OK)) {
+            actualizarObjetos();
+        }
+
+
     }
 }

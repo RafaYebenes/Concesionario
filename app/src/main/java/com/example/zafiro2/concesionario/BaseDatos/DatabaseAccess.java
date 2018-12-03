@@ -1,4 +1,5 @@
 package com.example.zafiro2.concesionario.BaseDatos;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -80,12 +81,12 @@ public class DatabaseAccess {
         c.close();
         return arrayExtras;
     }
-    public Coches traerUnCoche(int pos){
+    public Coches traerUnCoche(int pos, int nuevo){
 
         Cursor c;
         Coches coche = new Coches();
         String posicion = Integer.toString(pos);
-        c = database.rawQuery("select * from coches where id ="+posicion, null);
+        c = database.rawQuery("select * from coches where id ="+posicion+" and nuevo ="+nuevo, null);
 
         if(c.moveToFirst()){
             do{
@@ -97,5 +98,22 @@ public class DatabaseAccess {
         return coche;
 
     }
+    public void updateCliente(Coches coche, int posi){
+
+        int pos = posi;
+
+        ContentValues valores = new ContentValues();
+
+        valores.put("marca", coche.getMarca());
+        valores.put("modelo", coche.getModelo());
+        valores.put("descripcion", coche.getDescripcion());
+        valores.put("imagen",coche.getImagen());
+        valores.put("precio", coche.getPrecio());
+
+
+        database.update("coches",valores,"id="+pos+1,null);
+        database.close();
+    }
+
 
 }

@@ -2,13 +2,17 @@ package com.example.zafiro2.concesionario.Objetos;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,19 +30,22 @@ public class DatosCoches extends AppCompatActivity {
     EditText edtDatosPrecio;
     EditText edtDatosDescripcion;
     FloatingActionButton fbaGuardar;
+    Coches coche = new Coches();
+    int[] id = new int[]{};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_coches);
         Intent intent = getIntent();
-        int id = intent.getIntExtra("pos",0);
+        id = intent.getIntArrayExtra("pos");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
         toolbar.setTitle("Concesionario");
         setSupportActionBar(toolbar);
 
         cargarObejos();
-        cargarDatos(id);
+        cargarDatos(id[0],id[1]);
+
     }
 
     @Override
@@ -71,27 +78,28 @@ public class DatosCoches extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void cargarDatos(int pos){
+    public void cargarDatos(int pos, int nuevo){
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
-        Coches coche = databaseAccess.traerUnCoche(pos);
-        if(coche==null){
-            Toast.makeText(this, "puta bida", Toast.LENGTH_SHORT).show();
-        }
-        /*edtDatosMarca.setText(coche.getMarca());
+        coche = databaseAccess.traerUnCoche(pos+1, nuevo);
+        Toast.makeText(this, coche.getDescripcion(), Toast.LENGTH_SHORT).show();
+       edtDatosMarca.setText(coche.getMarca());
         edtDatosModelo.setText(coche.getModelo());
-        edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
-       // edtDatosDescripcion.setText(coche.getDescripcion());*/
-
+       // edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
+        edtDatosDescripcion.setText(coche.getDescripcion());
+        int id = getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
+        Drawable drawable = getResources().getDrawable(id);
+        imvCoche.setImageDrawable(drawable);
     }
     public void cargarObejos(){
         imvCoche = findViewById(R.id.imvCocheDatos);
         edtDatosMarca = findViewById(R.id.edtDatosMarca);
         edtDatosModelo = findViewById(R.id.edtDatosModelo);
         edtDatosPrecio = findViewById(R.id.edtDatosPrecio);
+        edtDatosDescripcion = findViewById(R.id.edtDatosDescripcion);
         fbaGuardar = findViewById(R.id.fbaGuardar);
-
-        //habilitarEdicionDatos(false);
+        fbaGuardar.setOnClickListener(mCorkyListener);
+        habilitarEdicionDatos(false);
 
     }
 
@@ -111,4 +119,23 @@ public class DatosCoches extends AppCompatActivity {
 
         }
     }
+
+    public void guardarDatos(){
+        Coches cocheActualizado = new Coches(edtDatosMarca.getText().toString(), edtDatosModelo.getText().toString(), edtDatosDescripcion.getText().toString(),coche.getImagen(),Float.parseFloat(edtDatosPrecio.getText().toString()),coche.getNuevo());
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
+        databaseAccess.open();
+        databaseAccess.updateCliente(cocheActualizado,id[0]);
+    }
+
+    private View.OnClickListener mCorkyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == findViewById(R.id.fbaGuardar).getId()) {//Si pulsamos en siguiente
+                guardarDatos();
+                setResult(RESULT_OK, null);
+                finish();
+
+            }
+        }
+    };
 }
