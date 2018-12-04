@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.Objetos.Extras;
@@ -44,7 +43,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-               arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+               arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getBlob(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
@@ -59,7 +58,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-                arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+                arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getBlob(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
@@ -83,14 +82,14 @@ public class DatabaseAccess {
     }
     public Coches traerUnCoche(int pos, int nuevo){
 
-        Cursor c;
+        Cursor c = null;
         Coches coche = new Coches();
         String posicion = Integer.toString(pos);
         c = database.rawQuery("select * from coches where id ="+pos+" and nuevo ="+nuevo, null);
 
         if(c.moveToFirst()){
             do{
-                coche = new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6));
+                coche = new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getBlob(4),c.getFloat(5),c.getInt(6));
             }while (c.moveToNext());
         }
 

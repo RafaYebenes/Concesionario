@@ -94,12 +94,12 @@ public class ListaCoches extends AppCompatActivity {
             case R.id.mCoches_Nuevos:
                 band=0;
                 actualizarObjetos();
-                Toast.makeText(this, Integer.toString(band), Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.mCoches_Ocasion:
                 band=1;
                 actualizarObjetos();
-                Toast.makeText(this, Integer.toString(band), Toast.LENGTH_SHORT).show();
+
                 break;
 
         }//fin switch*/

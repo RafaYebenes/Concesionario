@@ -91,10 +91,14 @@ public class AdaptadorListaCoches extends BaseAdapter{
 
 
 
-            ImageView imvImagen = v.findViewById(R.id.imvImagen);
-            int id = v.getResources().getIdentifier(dir.getImagen(), "drawable", v.getContext().getPackageName());
-            Drawable drawable = v.getResources().getDrawable(id); //Metodo de prueba, no se si servirá para introducir la ruta de la imagen
-            imvImagen.setImageDrawable(drawable);
+           ByteArrayInputStream imageStream = new ByteArrayInputStream(dir.getImagen());
+            // CREAMOS EL BITMAP IMAGEN Y DECODIFICAMOS EL FLUJO DE ENTRADA CREADO ANTERIORMENTE.
+            Bitmap imagen= BitmapFactory.decodeStream(imageStream);
+            // PONEMOS EL BITMAP EN EL IMAGENVIEW
+            ImageView imvImagen =  v.findViewById(R.id.imvImagen);
+
+            imvImagen.setImageBitmap(imagen);
+
             return v;
         }
 }

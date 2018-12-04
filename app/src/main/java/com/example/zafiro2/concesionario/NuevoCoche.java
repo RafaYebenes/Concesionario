@@ -46,7 +46,7 @@ public class NuevoCoche extends AppCompatActivity {
     };
 
     public void guardarDatos(){
-        Coches coche = new Coches();
+        Coches coche = new Coches(/*c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getBlob(4), c.getFloat(5), c.getInt(6)*/);
         DatabaseAccess  databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
         int id = databaseAccess.contarCoches();

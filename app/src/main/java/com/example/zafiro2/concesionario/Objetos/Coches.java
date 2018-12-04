@@ -2,11 +2,12 @@ package com.example.zafiro2.concesionario.Objetos;
 
 public class Coches {
 
-    String marca, modelo, descripcion,imagen;
+    String marca, modelo, descripcion;
+    private byte[] imagen;
     Float precio;
     Integer nuevo;
     int id;
-    public Coches(int id, String marca, String modelo, String descripcion, String imagen, Float precio, Integer nuevo) {
+    public Coches(int id, String marca, String modelo, String descripcion, byte[] imagen, Float precio, Integer nuevo) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -44,11 +45,11 @@ public class Coches {
         this.descripcion = descripcion;
     }
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 

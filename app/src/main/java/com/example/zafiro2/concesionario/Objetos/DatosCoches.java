@@ -2,9 +2,10 @@ package com.example.zafiro2.concesionario.Objetos;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,13 +13,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.R;
+
+import java.io.ByteArrayInputStream;
 
 import static android.view.View.VISIBLE;
 
@@ -45,6 +47,7 @@ public class DatosCoches extends AppCompatActivity {
 
         cargarObejos();
         cargarDatos(id[0],id[1]);
+
 
 
     }
@@ -90,9 +93,16 @@ public class DatosCoches extends AppCompatActivity {
         edtDatosModelo.setText(coche.getModelo());
         edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
         edtDatosDescripcion.setText(coche.getDescripcion());
-        int id = this.getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
-        Drawable drawable = getResources().getDrawable(id);
-        imvCoche.setImageDrawable(drawable);
+       // int id = this.getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
+       // Drawable drawable = getResources().getDrawable(id);
+        //imvCoche.setImageDrawable(drawable);
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(coche.getImagen());
+        // CREAMOS EL BITMAP IMAGEN Y DECODIFICAMOS EL FLUJO DE ENTRADA CREADO ANTERIORMENTE.
+        Bitmap imagen= BitmapFactory.decodeStream(imageStream);
+        // PONEMOS EL BITMAP EN EL IMAGENVIEW
+        ImageView imvImagen =  findViewById(R.id.imvCocheDatos);
+
+        imvImagen.setImageBitmap(imagen);
 
     }
     public void cargarObejos(){
