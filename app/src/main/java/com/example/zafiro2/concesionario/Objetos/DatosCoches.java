@@ -68,7 +68,9 @@ public class DatosCoches extends AppCompatActivity {
                     fbaGuardar.setVisibility(VISIBLE);
                 break;
             case R.id.mEliminar:
-
+                    eliminarCoche();
+                    setResult(RESULT_OK, null);
+                    finish();
                 break;
             case R.id.mGenerarPresupuesto:
 
@@ -91,8 +93,7 @@ public class DatosCoches extends AppCompatActivity {
         int id = this.getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
         Drawable drawable = getResources().getDrawable(id);
         imvCoche.setImageDrawable(drawable);
-        Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, Integer.toString(nuevo), Toast.LENGTH_SHORT).show();
+
     }
     public void cargarObejos(){
         imvCoche = findViewById(R.id.imvCocheDatos);
@@ -130,6 +131,7 @@ public class DatosCoches extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
         databaseAccess.updateCliente(cocheActualizado,id[0]);
+        databaseAccess.close();
     }
 
     private View.OnClickListener mCorkyListener = new View.OnClickListener() {
@@ -143,4 +145,11 @@ public class DatosCoches extends AppCompatActivity {
             }
         }
     };
+
+    public void eliminarCoche(){
+        DatabaseAccess databaseAccess =  DatabaseAccess.getInstace(this);
+        databaseAccess.open();
+        databaseAccess.eliminarCoche(coche.getId());
+        databaseAccess.close();
+    }
 }

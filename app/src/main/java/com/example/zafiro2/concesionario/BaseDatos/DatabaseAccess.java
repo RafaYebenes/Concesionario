@@ -115,5 +115,22 @@ public class DatabaseAccess {
         database.close();
     }
 
+    public void eliminarCoche(int pos){
+
+        database.delete("coches","id="+pos,null);
+        database.close();
+    }
+
+    public int contarCoches(){
+        int cont = 0;
+        Cursor c;
+        c = database.rawQuery("select * from coches", null);
+
+        if(c!=null){
+            cont = c.getCount();
+        }
+
+        return cont;
+    }
 
 }

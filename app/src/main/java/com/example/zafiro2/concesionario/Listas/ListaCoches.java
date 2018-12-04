@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
+import com.example.zafiro2.concesionario.NuevoCoche;
 import com.example.zafiro2.concesionario.Objetos.DatosCoches;
 import com.example.zafiro2.concesionario.Objetos.AdaptadorListaCoches;
 import com.example.zafiro2.concesionario.Objetos.Coches;
@@ -52,7 +53,7 @@ public class ListaCoches extends AppCompatActivity {
         Toolbar toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
 
         lvCoches = findViewById(R.id.lvCoches);
-       // fba = findViewById(R.id.fbaNuevoCoche);
+         fba = findViewById(R.id.fbaCrear);
         Intent intent = getIntent();
         band= intent.getIntExtra("band",0);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
@@ -73,6 +74,8 @@ public class ListaCoches extends AppCompatActivity {
             Toast.makeText(this, "Fallo critico", Toast.LENGTH_SHORT).show();
         }
         setSupportActionBar(toolbar3);
+
+        fba.setOnClickListener(mCorkyListener);
     }
 
     @Override
@@ -134,4 +137,14 @@ public class ListaCoches extends AppCompatActivity {
 
 
     }
+
+    private View.OnClickListener mCorkyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == findViewById(R.id.fbaCrear).getId()) {//Si pulsamos en siguiente
+                Intent intent = new Intent(getApplicationContext(), NuevoCoche.class);
+                startActivity(intent);
+            }
+        }
+    };
 }
