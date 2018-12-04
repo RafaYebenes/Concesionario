@@ -46,6 +46,7 @@ public class DatosCoches extends AppCompatActivity {
         cargarObejos();
         cargarDatos(id[0],id[1]);
 
+
     }
 
     @Override
@@ -81,15 +82,17 @@ public class DatosCoches extends AppCompatActivity {
     public void cargarDatos(int pos, int nuevo){
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
-        coche = databaseAccess.traerUnCoche(pos+1, nuevo);
-        Toast.makeText(this, coche.getDescripcion(), Toast.LENGTH_SHORT).show();
-       edtDatosMarca.setText(coche.getMarca());
+        coche = databaseAccess.traerUnCoche(pos, nuevo);
+
+        edtDatosMarca.setText(coche.getMarca());
         edtDatosModelo.setText(coche.getModelo());
-       // edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
+        edtDatosPrecio.setText(Float.toString(coche.getPrecio()));
         edtDatosDescripcion.setText(coche.getDescripcion());
-        int id = getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
+        int id = this.getResources().getIdentifier(coche.getImagen(), "drawable", this.getApplicationContext().getPackageName());
         Drawable drawable = getResources().getDrawable(id);
         imvCoche.setImageDrawable(drawable);
+        Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Integer.toString(nuevo), Toast.LENGTH_SHORT).show();
     }
     public void cargarObejos(){
         imvCoche = findViewById(R.id.imvCocheDatos);
@@ -121,7 +124,9 @@ public class DatosCoches extends AppCompatActivity {
     }
 
     public void guardarDatos(){
-        Coches cocheActualizado = new Coches(edtDatosMarca.getText().toString(), edtDatosModelo.getText().toString(), edtDatosDescripcion.getText().toString(),coche.getImagen(),Float.parseFloat(edtDatosPrecio.getText().toString()),coche.getNuevo());
+        String precio = edtDatosPrecio.getText().toString();
+
+        Coches cocheActualizado = new Coches(coche.getId(),edtDatosMarca.getText().toString(), edtDatosModelo.getText().toString(), edtDatosDescripcion.getText().toString(),coche.getImagen(),Float.parseFloat(precio),coche.getNuevo());
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
         databaseAccess.updateCliente(cocheActualizado,id[0]);

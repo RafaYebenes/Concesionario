@@ -5,8 +5,9 @@ public class Coches {
     String marca, modelo, descripcion,imagen;
     Float precio;
     Integer nuevo;
-
-    public Coches(String marca, String modelo, String descripcion, String imagen, Float precio, Integer nuevo) {
+    int id;
+    public Coches(int id, String marca, String modelo, String descripcion, String imagen, Float precio, Integer nuevo) {
+        this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.descripcion = descripcion;
@@ -65,5 +66,13 @@ public class Coches {
 
     public void setNuevo(Integer nuevo) {
         this.nuevo = nuevo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

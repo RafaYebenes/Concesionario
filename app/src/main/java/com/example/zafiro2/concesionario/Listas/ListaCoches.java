@@ -37,9 +37,11 @@ public class ListaCoches extends AppCompatActivity {
         lvCoches.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int[] posYBand = new int[]{position,band};
+                Coches coche = arrayCoches.get(position);
+                int[] posYBand = new int[]{coche.getId(),band};
                 Intent intent = new Intent(getApplicationContext(), DatosCoches.class);
                 intent.putExtra("pos",posYBand);
+                //Toast.makeText(ListaCoches.this, Integer.toString(coche.getId()), Toast.LENGTH_SHORT).show();
                 startActivityForResult(intent,1);
             }
         });

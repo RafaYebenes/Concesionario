@@ -44,7 +44,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-               arrayCoches.add(new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+               arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
@@ -59,7 +59,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-                arrayCoches.add(new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
+                arrayCoches.add(new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6)));
 
             }while (c.moveToNext());
         }
@@ -86,11 +86,11 @@ public class DatabaseAccess {
         Cursor c;
         Coches coche = new Coches();
         String posicion = Integer.toString(pos);
-        c = database.rawQuery("select * from coches where id ="+posicion+" and nuevo ="+nuevo, null);
+        c = database.rawQuery("select * from coches where id ="+pos+" and nuevo ="+nuevo, null);
 
         if(c.moveToFirst()){
             do{
-                coche = new Coches(c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6));
+                coche = new Coches(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getFloat(5),c.getInt(6));
             }while (c.moveToNext());
         }
 
@@ -111,7 +111,7 @@ public class DatabaseAccess {
         valores.put("precio", coche.getPrecio());
 
 
-        database.update("coches",valores,"id="+pos+1,null);
+        database.update("coches",valores,"id="+pos,null);
         database.close();
     }
 
