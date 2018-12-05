@@ -132,4 +132,18 @@ public class DatabaseAccess {
         return cont;
     }
 
+    public void insertarCoche(Coches coche){
+        ContentValues valores = new ContentValues();
+
+        valores.put("marca",  coche.getMarca());
+        valores.put("modelo", coche.getModelo());
+        valores.put("descripcion", coche.getDescripcion());
+        valores.put("imagen",coche.getImagen());
+        valores.put("precio", coche.getPrecio());
+        valores.put("nuevo",  coche.getNuevo());
+
+        database.insert("coches",null,valores);
+        database.close();
+    }
+
 }

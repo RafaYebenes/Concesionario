@@ -143,6 +143,7 @@ public class ListaCoches extends AppCompatActivity {
         public void onClick(View v) {
             if (v.getId() == findViewById(R.id.fbaCrear).getId()) {//Si pulsamos en siguiente
                 Intent intent = new Intent(getApplicationContext(), NuevoCoche.class);
+                intent.putExtra("nuevo",band);
                 startActivity(intent);
             }
         }
