@@ -50,8 +50,7 @@ public class ListaCoches extends AppCompatActivity {
     }
 
     public void CargarObjetos(){
-        Toolbar toolbar3 =
-                 findViewById(R.id.toolbar3);
+        Toolbar toolbar3 = findViewById(R.id.toolbar3);
 
         lvCoches = findViewById(R.id.lvCoches);
          fba = findViewById(R.id.fbaCrear);
@@ -108,8 +107,10 @@ public class ListaCoches extends AppCompatActivity {
             case R.id.mCoches_Ocasion:
                 band=1;
                 actualizarObjetos();
-
                 break;
+            case  R.id.mExtras:
+                Intent intent3 = new Intent(this,ListaExtras.class);
+                startActivity(intent3);
 
         }//fin switch*/
 

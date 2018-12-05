@@ -74,7 +74,7 @@ public class DatabaseAccess {
 
         if(c.moveToFirst()){
             do{
-                arrayExtras.add(new Extras(c.getString(1),c.getString(2),c.getFloat(3)));
+                arrayExtras.add(new Extras(c.getInt(0),c.getString(1),c.getString(2),c.getFloat(3)));
             }while (c.moveToNext());
         }
         c.close();
@@ -146,4 +146,19 @@ public class DatabaseAccess {
         database.close();
     }
 
+    public void eliminarExtra(int id){
+        database.delete("extras","id="+id,null);
+        database.close();
+    }
+
+    public void insertarExtra(Extras extra){
+        ContentValues valores = new ContentValues();
+
+        valores.put("nombre",extra.getNombre());
+        valores.put("descripcion",extra.getDescripcion());
+        valores.put("precio",extra.getPrecio());
+
+        database.insert("extras",null,valores);
+        database.close();
+    }
 }

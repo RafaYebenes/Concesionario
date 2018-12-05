@@ -104,7 +104,10 @@ public class NuevoCoche extends AppCompatActivity {
         // SI EL CÓDIGO RE PETICIÓN ES 0, LA IMAGEN VIENE DE LA CÁMARA DE FOTOS.
         if (requestCode == 0) {
             // CREAMOS UN MAPA DE BITS CON LOS DATOS QUE HEMOS RECOGIDO DE LA CÁMARA DE FOTOS.
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Bitmap bitmap = null;
+            if(data!=null) {
+                bitmap = (Bitmap) data.getExtras().get("data");
+            }
             // PONEMOS EL MAPA DE BITS EN EL IMAGEVIEW.
             imbImagenNuevo.setImageBitmap(bitmap);
             // CREAMOS UN ARRAY DE BYTES DE SALIDA.

@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.zafiro2.concesionario.Listas.ListaCoches;
+import com.example.zafiro2.concesionario.Listas.ListaExtras;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,12 +41,16 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("band",0);
             startActivity(intent);
             break;
+
             case R.id.mCoches_Ocasion:
             Intent intent2 = new Intent(this,ListaCoches.class);
             intent2.putExtra("band",1);
             startActivity(intent2);
-                break;
+            break;
 
+           case R.id.mExtras:
+               Intent intent3 = new Intent(this,ListaExtras.class);
+               startActivity(intent3);
         }//fin switch*/
 
         return super.onOptionsItemSelected(item);

@@ -4,8 +4,10 @@ public class Extras {
 
     String nombre, descripcion;
     Float precio;
+    int id;
 
-    public Extras(String nombre, String descripcion, Float precio) {
+    public Extras(int id, String nombre, String descripcion, Float precio) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -36,5 +38,13 @@ public class Extras {
 
     public void setPrecio(Float precio) {
         this.precio = precio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
