@@ -136,6 +136,7 @@ public class ListaCoches extends AppCompatActivity {
         }
 
 
+
     }
 
     private View.OnClickListener mCorkyListener = new View.OnClickListener() {
@@ -144,7 +145,7 @@ public class ListaCoches extends AppCompatActivity {
             if (v.getId() == findViewById(R.id.fbaCrear).getId()) {//Si pulsamos en siguiente
                 Intent intent = new Intent(getApplicationContext(), NuevoCoche.class);
                 intent.putExtra("nuevo",band);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         }
     };

@@ -1,6 +1,8 @@
 package com.example.zafiro2.concesionario.Objetos;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -71,9 +73,25 @@ public class DatosCoches extends AppCompatActivity {
                     fbaGuardar.setVisibility(VISIBLE);
                 break;
             case R.id.mEliminar:
-                    eliminarCoche();
-                    setResult(RESULT_OK, null);
-                    finish();
+
+                final DatabaseAccess databaseAccess =  DatabaseAccess.getInstace(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(DatosCoches.this);
+                builder.setTitle("Eliminar un Coche");
+                builder.setMessage("Desea realmente eliminar el Coche?");
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Hacer cosas aqui al hacer clic en el boton NO
+                    }
+                });
+                builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminarCoche();
+                    }
+                });
+                builder.show();
+
                 break;
             case R.id.mGenerarPresupuesto:
 
@@ -157,9 +175,12 @@ public class DatosCoches extends AppCompatActivity {
     };
 
     public void eliminarCoche(){
+
         DatabaseAccess databaseAccess =  DatabaseAccess.getInstace(this);
         databaseAccess.open();
         databaseAccess.eliminarCoche(coche.getId());
         databaseAccess.close();
+        setResult(RESULT_OK, null);
+        finish();
     }
 }

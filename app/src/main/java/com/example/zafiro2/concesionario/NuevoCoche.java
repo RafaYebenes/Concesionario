@@ -93,8 +93,8 @@ public class NuevoCoche extends AppCompatActivity {
         coche.setImagen(foto);
 
         databaseAccess.insertarCoche(coche);
+        setResult(RESULT_OK, null);
         finish();
-        //falta la imagen
     }
 
     @Override
