@@ -82,6 +82,14 @@ public class ListaCoches extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_estandar, menu);
+        if(band==0) {
+            menu.findItem(R.id.mCoches_Ocasion).setEnabled(true);
+            menu.findItem(R.id.mCoches_Nuevos).setEnabled(false);
+        }
+        if(band==1){
+            menu.findItem(R.id.mCoches_Nuevos).setEnabled(true);
+            menu.findItem(R.id.mCoches_Ocasion).setEnabled(false);
+        }
         return true;
     }
 
@@ -114,6 +122,7 @@ public class ListaCoches extends AppCompatActivity {
         if(band==0){
             arrayCoches = databaseAccess.todosLosCochesNuevos();
             toolbar3.setTitle("Coches Nuevos");
+
         }
         else{
             arrayCoches = databaseAccess.todosLosCochesOcasion();
