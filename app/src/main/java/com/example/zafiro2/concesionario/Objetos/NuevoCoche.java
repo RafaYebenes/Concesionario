@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario;
+package com.example.zafiro2.concesionario.Objetos;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.Objetos.Coches;
+import com.example.zafiro2.concesionario.R;
 
 import java.io.ByteArrayOutputStream;
 

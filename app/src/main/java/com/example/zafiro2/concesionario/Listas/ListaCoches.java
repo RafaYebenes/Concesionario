@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
-import com.example.zafiro2.concesionario.NuevoCoche;
+import com.example.zafiro2.concesionario.Objetos.NuevoCoche;
 import com.example.zafiro2.concesionario.Objetos.DatosCoches;
 import com.example.zafiro2.concesionario.Objetos.AdaptadorListaCoches;
 import com.example.zafiro2.concesionario.Objetos.Coches;
@@ -50,7 +50,8 @@ public class ListaCoches extends AppCompatActivity {
     }
 
     public void CargarObjetos(){
-        Toolbar toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
+        Toolbar toolbar3 =
+                 findViewById(R.id.toolbar3);
 
         lvCoches = findViewById(R.id.lvCoches);
          fba = findViewById(R.id.fbaCrear);
@@ -116,7 +117,7 @@ public class ListaCoches extends AppCompatActivity {
     }
 
     public void actualizarObjetos(){
-        Toolbar toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
+        Toolbar toolbar3 =  findViewById(R.id.toolbar3);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
         if(band==0){
