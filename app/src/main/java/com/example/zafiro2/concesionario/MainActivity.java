@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.zafiro2.concesionario.Listas.ListaCoches;
 import com.example.zafiro2.concesionario.Listas.ListaExtras;
+import com.example.zafiro2.concesionario.Objetos.Conocenos;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
            case R.id.mExtras:
                Intent intent3 = new Intent(this,ListaExtras.class);
                startActivity(intent3);
+               break;
+           case R.id.mConocenos:
+                Intent intent4 = new Intent(this,Conocenos.class);
+                startActivity(intent4);
         }//fin switch*/
 
         return super.onOptionsItemSelected(item);

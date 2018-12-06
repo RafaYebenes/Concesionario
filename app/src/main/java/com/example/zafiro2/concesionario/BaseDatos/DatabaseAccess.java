@@ -84,7 +84,7 @@ public class DatabaseAccess {
 
         Cursor c = null;
         Coches coche = new Coches();
-        String posicion = Integer.toString(pos);
+
         c = database.rawQuery("select * from coches where id ="+pos+" and nuevo ="+nuevo, null);
 
         if(c.moveToFirst()){

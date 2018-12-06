@@ -1,7 +1,7 @@
 package com.example.zafiro2.concesionario.Objetos;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.example.zafiro2.concesionario.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,10 +38,10 @@ public class Conocenos extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(37.4425799, -4.1938638);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Estamos Aquí"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
