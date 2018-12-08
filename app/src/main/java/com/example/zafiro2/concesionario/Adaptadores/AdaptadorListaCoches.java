@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario.Objetos;
+package com.example.zafiro2.concesionario.Adaptadores;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.R;
 
 import java.io.ByteArrayInputStream;

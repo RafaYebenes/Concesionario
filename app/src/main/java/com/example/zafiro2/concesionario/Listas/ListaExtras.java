@@ -3,8 +3,6 @@ package com.example.zafiro2.concesionario.Listas;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,13 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
-import com.example.zafiro2.concesionario.Objetos.AdaptadorListaExtras;
-import com.example.zafiro2.concesionario.Objetos.DatosCoches;
+import com.example.zafiro2.concesionario.Adaptadores.AdaptadorListaExtras;
 import com.example.zafiro2.concesionario.Objetos.Extras;
-import com.example.zafiro2.concesionario.Objetos.NuevoExtra;
+import com.example.zafiro2.concesionario.Actividades.NuevoExtra;
 import com.example.zafiro2.concesionario.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario.Objetos;
+package com.example.zafiro2.concesionario.Actividades;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
+import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.R;
 
 import java.io.ByteArrayInputStream;
@@ -36,6 +35,7 @@ public class DatosCoches extends AppCompatActivity {
     FloatingActionButton fbaGuardar;
     Coches coche = new Coches();
     int[] id = new int[]{};
+    int cocheAEnviar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class DatosCoches extends AppCompatActivity {
 
         cargarObejos();
         cargarDatos(id[0],id[1]);
-
+        cocheAEnviar= id[0];
 
 
     }
@@ -94,7 +94,9 @@ public class DatosCoches extends AppCompatActivity {
 
                 break;
             case R.id.mGenerarPresupuesto:
-
+                    Intent intent = new Intent(this,Presupuesto.class);
+                    intent.putExtra("coche", cocheAEnviar);
+                    startActivity(intent);
                 break;
 
         }//fin switch*/

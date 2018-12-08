@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.example.zafiro2.concesionario.Listas.ListaCoches;
 import com.example.zafiro2.concesionario.Listas.ListaExtras;
-import com.example.zafiro2.concesionario.Objetos.Conocenos;
+import com.example.zafiro2.concesionario.Actividades.Conocenos;
 
 public class MainActivity extends AppCompatActivity {
 

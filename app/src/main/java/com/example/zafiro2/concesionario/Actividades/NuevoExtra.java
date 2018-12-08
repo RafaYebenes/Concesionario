@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario.Objetos;
+package com.example.zafiro2.concesionario.Actividades;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
+import com.example.zafiro2.concesionario.Objetos.Extras;
 import com.example.zafiro2.concesionario.R;
 
 public class NuevoExtra extends AppCompatActivity {

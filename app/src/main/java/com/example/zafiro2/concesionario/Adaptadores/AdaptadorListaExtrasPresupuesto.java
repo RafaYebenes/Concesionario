@@ -1,27 +1,24 @@
-package com.example.zafiro2.concesionario.Objetos;
+package com.example.zafiro2.concesionario.Adaptadores;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.zafiro2.concesionario.Objetos.Extras;
 import com.example.zafiro2.concesionario.R;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
-public class AdaptadorListaExtras extends BaseAdapter {
+public class AdaptadorListaExtrasPresupuesto extends BaseAdapter {
 
     protected Activity activity;
     protected ArrayList<Extras> items;
 
-    public AdaptadorListaExtras(Activity activity, ArrayList<Extras> items){
+    public AdaptadorListaExtrasPresupuesto(Activity activity, ArrayList<Extras> items){
         this.activity = activity;
         this.items = items;
     }
@@ -59,7 +56,7 @@ public class AdaptadorListaExtras extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            v = inf.inflate(R.layout.adaptador_lista_extras, null);
+            v = inf.inflate(R.layout.adaptador_lista_extras_presupuesto, null);
 
 
         }
@@ -67,14 +64,12 @@ public class AdaptadorListaExtras extends BaseAdapter {
         Extras dir = items.get(position);
 
 
-        TextView txvNombreExtra = v.findViewById(R.id.txvNombreExtra);
+        TextView txvNombreExtra = v.findViewById(R.id.txvNombreListaExtrasPre);
         txvNombreExtra.setText(dir.getNombre());
 
-        TextView txvPrecioExtra = v.findViewById(R.id.txvPrecioExtra);
+        TextView txvPrecioExtra = v.findViewById(R.id.txvPrecioListaExtrasPre);
         txvPrecioExtra.setText(Float.toString(dir.getPrecio()));
 
-        TextView txvDescripcionExtra = v.findViewById(R.id.txvDescripcionExtra);
-        txvDescripcionExtra.setText(dir.getDescripcion());
 
 
 

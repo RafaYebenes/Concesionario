@@ -1,4 +1,4 @@
-package com.example.zafiro2.concesionario.Objetos;
+package com.example.zafiro2.concesionario.Actividades;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

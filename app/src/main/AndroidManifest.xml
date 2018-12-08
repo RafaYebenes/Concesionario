@@ -34,10 +34,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Listas.ListaCoches" />
-        <activity android:name=".Objetos.DatosCoches" />
-        <activity android:name=".Objetos.NuevoCoche" />
+        <activity android:name=".Actividades.DatosCoches" />
+        <activity android:name=".Actividades.NuevoCoche" />
         <activity android:name=".Listas.ListaExtras" />
-        <activity android:name=".Objetos.NuevoExtra" />
+        <activity android:name=".Actividades.NuevoExtra" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,8 +51,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Objetos.Conocenos"
-            android:label="@string/title_activity_conocenos"></activity>
+            android:name=".Actividades.Conocenos"
+            android:label="@string/title_activity_conocenos" />
+        <activity android:name=".Actividades.Presupuesto"></activity>
     </application>
 
 </manifest>

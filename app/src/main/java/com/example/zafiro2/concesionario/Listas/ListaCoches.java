@@ -14,9 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
-import com.example.zafiro2.concesionario.Objetos.NuevoCoche;
-import com.example.zafiro2.concesionario.Objetos.DatosCoches;
-import com.example.zafiro2.concesionario.Objetos.AdaptadorListaCoches;
+import com.example.zafiro2.concesionario.Actividades.NuevoCoche;
+import com.example.zafiro2.concesionario.Actividades.DatosCoches;
+import com.example.zafiro2.concesionario.Adaptadores.AdaptadorListaCoches;
 import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.R;
 
