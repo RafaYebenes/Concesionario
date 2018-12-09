@@ -1,9 +1,13 @@
 package com.example.zafiro2.concesionario.Actividades;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,11 +60,32 @@ public class Presupuesto extends AppCompatActivity {
 
         txvMarcaPre.setText(coche.getMarca());
         txvModeloPre.setText(coche.getModelo());
-        txvPrecioPre.setText("Precio: "+Float.toString(coche.getPrecio()));
+        txvPrecioPre.setText(Float.toString(coche.getPrecio()));
 
         arrayExtrasPre = databaseAccess.todosLosExtras();
         adaptadorListaExtrasPresupuesto = new AdaptadorListaExtrasPresupuesto(this,arrayExtrasPre);
         lvListaExtrasPre.setAdapter(adaptadorListaExtrasPresupuesto);
+
+        lvListaExtrasPre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Extras extra = arrayExtrasPre.get(i);
+                if(extra.isSelecionado()==false){
+                    extra.setSelecionado(true);
+                    String precio = txvPrecioPre.getText().toString();
+                    Float precioSuma = extra.getPrecio() + Float.parseFloat(precio);
+                    txvPrecioPre.setText(Float.toString(precioSuma));
+                    view.setBackgroundColor(Color.GRAY);
+                }else{
+                    extra.setSelecionado(false);
+                    String precio = txvPrecioPre.getText().toString();
+                    Float precioSuma =  Float.parseFloat(precio) - extra.getPrecio();
+                    txvPrecioPre.setText(Float.toString(precioSuma));
+                    view.setBackgroundColor(Color.alpha(0));
+                }
+            }
+        });
+
 
         
     }

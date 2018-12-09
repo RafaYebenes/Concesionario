@@ -36,6 +36,7 @@ public class DatosCoches extends AppCompatActivity {
     Coches coche = new Coches();
     int[] id = new int[]{};
     int cocheAEnviar;
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +52,18 @@ public class DatosCoches extends AppCompatActivity {
         cargarDatos(id[0],id[1]);
         cocheAEnviar= id[0];
 
+        if(id[1]==1){
+            fbaGuardar.setVisibility(VISIBLE);
+        }
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_datos_coche_nuevo, menu);
+        if(id[1]==0) {
+            menuInflater.inflate(R.menu.menu_datos_coche_nuevo, menu);
+        }
         return true;
     }
 
@@ -168,9 +174,14 @@ public class DatosCoches extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (v.getId() == findViewById(R.id.fbaGuardar).getId()) {//Si pulsamos en siguiente
-                guardarDatos();
-                setResult(RESULT_OK, null);
-                finish();
+                if(id[1]==0) {
+                    guardarDatos();
+                    setResult(RESULT_OK, null);
+                    finish();
+                }
+                if(id[1]==1){
+                    
+                }
 
             }
         }

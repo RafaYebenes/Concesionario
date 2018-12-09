@@ -5,6 +5,7 @@ public class Extras {
     String nombre, descripcion;
     Float precio;
     int id;
+    boolean selecionado = false;
 
     public Extras(int id, String nombre, String descripcion, Float precio) {
         this.id = id;
@@ -46,5 +47,13 @@ public class Extras {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isSelecionado() {
+        return selecionado;
+    }
+
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
     }
 }
