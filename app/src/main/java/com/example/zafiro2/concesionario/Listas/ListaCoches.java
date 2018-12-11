@@ -17,6 +17,7 @@ import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.Actividades.NuevoCoche;
 import com.example.zafiro2.concesionario.Actividades.DatosCoches;
 import com.example.zafiro2.concesionario.Adaptadores.AdaptadorListaCoches;
+import com.example.zafiro2.concesionario.Conocenos;
 import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.R;
 
@@ -111,7 +112,11 @@ public class ListaCoches extends AppCompatActivity {
             case  R.id.mExtras:
                 Intent intent3 = new Intent(this,ListaExtras.class);
                 startActivity(intent3);
-
+                break;
+            case R.id.mConocenos:
+                Intent intent4 = new Intent(this, Conocenos.class);
+                startActivity(intent4);
+                break;
         }//fin switch*/
 
         return super.onOptionsItemSelected(item);

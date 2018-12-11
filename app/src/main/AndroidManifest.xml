@@ -50,11 +50,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".Actividades.Conocenos"
-            android:label="@string/title_activity_conocenos" />
         <activity android:name=".Actividades.Presupuesto" />
-        <activity android:name=".ResumenPresupuesto"></activity>
+        <activity android:name=".ResumenPresupuesto" />
+        <activity
+            android:name=".Conocenos"
+            android:label="@string/title_activity_conocenos"></activity>
     </application>
 
 </manifest>

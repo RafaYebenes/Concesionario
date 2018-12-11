@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.Adaptadores.AdaptadorListaExtras;
+import com.example.zafiro2.concesionario.Conocenos;
 import com.example.zafiro2.concesionario.Objetos.Extras;
 import com.example.zafiro2.concesionario.Actividades.NuevoExtra;
 import com.example.zafiro2.concesionario.R;
@@ -96,6 +97,10 @@ public class ListaExtras extends AppCompatActivity {
                 });
                 builder.show();
 
+                break;
+            case R.id.mConocenos_Extras:
+                Intent intent4 = new Intent(this, Conocenos.class);
+                startActivity(intent4);
                 break;
         }//fin switch*/
 
