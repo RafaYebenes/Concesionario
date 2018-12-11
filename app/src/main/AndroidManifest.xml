@@ -53,7 +53,8 @@
         <activity
             android:name=".Actividades.Conocenos"
             android:label="@string/title_activity_conocenos" />
-        <activity android:name=".Actividades.Presupuesto"></activity>
+        <activity android:name=".Actividades.Presupuesto" />
+        <activity android:name=".ResumenPresupuesto"></activity>
     </application>
 
 </manifest>

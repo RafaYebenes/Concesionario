@@ -17,6 +17,7 @@ import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.Objetos.Extras;
 import com.example.zafiro2.concesionario.Objetos.Presupuestos;
 import com.example.zafiro2.concesionario.R;
+import com.example.zafiro2.concesionario.ResumenPresupuesto;
 
 import java.util.ArrayList;
 
@@ -29,9 +30,10 @@ public class Presupuesto extends AppCompatActivity {
     FloatingActionButton fbaGenerarResumen;
     Coches coche = new Coches();
     ArrayList<Extras> arrayExtrasPre;
-    ArrayList<Extras> arrayExtrasAux;
+    ArrayList<Extras> arrayExtrasAux = new ArrayList<Extras>();
     AdaptadorListaExtrasPresupuesto adaptadorListaExtrasPresupuesto;
     Presupuestos presupuestos = new Presupuestos();
+    int[] array = new int[]{};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +82,22 @@ public class Presupuesto extends AppCompatActivity {
                     Float precioSuma = extra.getPrecio() + Float.parseFloat(precio);
                     txvPrecioPre.setText(Float.toString(precioSuma));
                     view.setBackgroundColor(Color.GRAY);
-                    arrayExtrasAux.add(extra);
+                    if(arrayExtrasAux.size()==0){
+                        arrayExtrasAux.add(extra);
+
+                    }
+                    else{
+                        arrayExtrasAux.add(extra);
+                    }
                 }else{
                     extra.setSelecionado(false);
                     String precio = txvPrecioPre.getText().toString();
                     Float precioSuma =  Float.parseFloat(precio) - extra.getPrecio();
                     txvPrecioPre.setText(Float.toString(precioSuma));
                     view.setBackgroundColor(Color.alpha(0));
-                    arrayExtrasAux.remove(extra);
+                    if(arrayExtrasAux.size()!=0) {
+                        arrayExtrasAux.remove(extra);
+                    }
                 }
             }
         });
@@ -100,18 +110,21 @@ public class Presupuesto extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (v.getId() == findViewById(R.id.fbaGenerarResumen).getId()) {//Si pulsamos en siguiente
-                presupuestos.setId(coche.getId());
+               presupuestos.setId(coche.getId());
                 presupuestos.setMarca(coche.getMarca());
                 presupuestos.setModelo(coche.getModelo());
                 presupuestos.setPrecio(Float.parseFloat(txvPrecioPre.getText().toString()));
-                presupuestos.setArrayExtras(arrayExtrasAux);
+                presupuestos.setTamaño(arrayExtrasAux.size());
+                presupuestos.setDesc(coche.getDescripcion());
 
-               // Intent intent = new Intent(this,);
+                Intent intent = new Intent(getApplicationContext(),ResumenPresupuesto.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("presupuesto",presupuestos);
-              //  intent.putExtra("presupuesto",bundle);
-
-
+                for(int i =0; i<arrayExtrasAux.size();i++){
+                    bundle.putSerializable("elemento"+i+1,arrayExtrasAux.get(i));
+                }
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         }
     };

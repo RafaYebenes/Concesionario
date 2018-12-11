@@ -1,6 +1,8 @@
 package com.example.zafiro2.concesionario.Objetos;
 
-public class Extras {
+import java.io.Serializable;
+
+public class Extras  implements Serializable {
 
     String nombre, descripcion;
     Float precio;

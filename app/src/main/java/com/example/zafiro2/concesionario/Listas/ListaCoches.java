@@ -66,7 +66,7 @@ public class ListaCoches extends AppCompatActivity {
             arrayCoches = databaseAccess.todosLosCochesOcasion();
             toolbar3.setTitle("Coches de Ocasión");
         }
-        if(arrayCoches!=null) { //Prueba de entrega de datos desde la bbdd
+        if(arrayCoches!=null) { //Prueba de  entrega de datos desde la bbdd
             adaptadorListaCoches = new AdaptadorListaCoches(this, arrayCoches);
             lvCoches.setAdapter(adaptadorListaCoches);
         }

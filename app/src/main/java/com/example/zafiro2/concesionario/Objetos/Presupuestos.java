@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 public class Presupuestos  implements Serializable {
 
-    int id;
-    ArrayList<Extras> arrayExtras;
+    int id, tamaño;
+    ArrayList arrayExtras;
     String Marca;
     String Modelo;
+    String Desc;
     Float precio;
+
 
     public Presupuestos(int id, ArrayList<Extras> arrayExtras, String marca, String modelo, Float precio) {
         this.id = id;
@@ -30,11 +32,11 @@ public class Presupuestos  implements Serializable {
         this.id = id;
     }
 
-    public ArrayList<Extras> getArrayExtras() {
+    public ArrayList getArrayExtras() {
         return arrayExtras;
     }
 
-    public void setArrayExtras(ArrayList<Extras> arrayExtras) {
+    public void setArrayExtras(ArrayList arrayExtras) {
         this.arrayExtras = arrayExtras;
     }
 
@@ -60,5 +62,21 @@ public class Presupuestos  implements Serializable {
 
     public void setPrecio(Float precio) {
         this.precio = precio;
+    }
+
+    public String getDesc() {
+        return Desc;
+    }
+
+    public void setDesc(String desc) {
+        Desc = desc;
+    }
+
+    public int getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(int tamaño) {
+        this.tamaño = tamaño;
     }
 }

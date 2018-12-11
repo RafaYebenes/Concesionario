@@ -161,4 +161,19 @@ public class DatabaseAccess {
         database.insert("extras",null,valores);
         database.close();
     }
+
+    public Extras traerExtraById(int id){
+        Cursor c = null;
+        Extras extras = new Extras();
+
+        c = database.rawQuery("select * from extras where id ="+id, null);
+
+        if(c.moveToFirst()){
+            do{
+                extras = new Extras(c.getInt(0),c.getString(1),c.getString(2),c.getFloat(3));
+            }while (c.moveToNext());
+        }
+        c.close();
+        return extras;
+    }
 }
