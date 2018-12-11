@@ -43,7 +43,6 @@ public class ListaCoches extends AppCompatActivity {
                 int[] posYBand = new int[]{coche.getId(),band};
                 Intent intent = new Intent(getApplicationContext(), DatosCoches.class);
                 intent.putExtra("pos",posYBand);
-                //Toast.makeText(ListaCoches.this, Integer.toString(coche.getId()), Toast.LENGTH_SHORT).show();
                 startActivityForResult(intent,1);
             }
         });
@@ -150,9 +149,6 @@ public class ListaCoches extends AppCompatActivity {
         if ((requestCode == 1) && (resultCode == RESULT_OK)) {
             actualizarObjetos();
         }
-
-
-
     }
 
     private View.OnClickListener mCorkyListener = new View.OnClickListener() {

@@ -1,9 +1,11 @@
 package com.example.zafiro2.concesionario;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,18 +59,21 @@ public class ResumenPresupuesto extends AppCompatActivity {
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstace(this);
         databaseAccess.open();
-
-
         for(int i = 0; i<size;i++){
-
             Extras extra = (Extras) bundle.getSerializable("elemento"+i+1);
             arrayListExtras.add(extra);
-
         }
-
         AdaptadorListaExtrasPresupuesto  adaptadorListaExtrasPresupuesto = new AdaptadorListaExtrasPresupuesto(this,arrayListExtras);
         lvExtrasResumen.setAdapter(adaptadorListaExtrasPresupuesto);
-
         lvExtrasResumen.setEnabled(false);
     }
+
+    private View.OnClickListener mCorkyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == findViewById(R.id.fbaGuardar).getId()) {//Si pulsamos en siguiente
+                
+            }
+        }
+    };
 }
