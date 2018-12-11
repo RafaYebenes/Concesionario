@@ -138,7 +138,9 @@ public class DatosCoches extends AppCompatActivity {
         edtDatosPrecio = findViewById(R.id.edtDatosPrecio);
         edtDatosDescripcion = findViewById(R.id.edtDatosDescripcion);
         fbaGuardar = findViewById(R.id.fbaGuardar);
+
         fbaGuardar.setOnClickListener(mCorkyListener);
+
         habilitarEdicionDatos(false);
 
     }

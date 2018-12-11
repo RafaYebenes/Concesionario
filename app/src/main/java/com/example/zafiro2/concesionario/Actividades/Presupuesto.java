@@ -1,11 +1,10 @@
 package com.example.zafiro2.concesionario.Actividades;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +15,7 @@ import com.example.zafiro2.concesionario.Adaptadores.AdaptadorListaExtrasPresupu
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.Objetos.Extras;
+import com.example.zafiro2.concesionario.Objetos.Presupuestos;
 import com.example.zafiro2.concesionario.R;
 
 import java.util.ArrayList;
@@ -29,7 +29,9 @@ public class Presupuesto extends AppCompatActivity {
     FloatingActionButton fbaGenerarResumen;
     Coches coche = new Coches();
     ArrayList<Extras> arrayExtrasPre;
+    ArrayList<Extras> arrayExtrasAux;
     AdaptadorListaExtrasPresupuesto adaptadorListaExtrasPresupuesto;
+    Presupuestos presupuestos = new Presupuestos();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class Presupuesto extends AppCompatActivity {
         txvModeloPre = findViewById(R.id.txvModeloPre);
         txvPrecioPre = findViewById(R.id.txvPrecioPre);
         lvListaExtrasPre = findViewById(R.id.lvListaExtrasPre);
+        fbaGenerarResumen = findViewById(R.id.fbaGenerarResumen);
+        fbaGenerarResumen.setOnClickListener(mCorkyListener);
     }
     public void CargarDatos(int id){
         DatabaseAccess  databaseAccess = DatabaseAccess.getInstace(this);
@@ -76,12 +80,14 @@ public class Presupuesto extends AppCompatActivity {
                     Float precioSuma = extra.getPrecio() + Float.parseFloat(precio);
                     txvPrecioPre.setText(Float.toString(precioSuma));
                     view.setBackgroundColor(Color.GRAY);
+                    arrayExtrasAux.add(extra);
                 }else{
                     extra.setSelecionado(false);
                     String precio = txvPrecioPre.getText().toString();
                     Float precioSuma =  Float.parseFloat(precio) - extra.getPrecio();
                     txvPrecioPre.setText(Float.toString(precioSuma));
                     view.setBackgroundColor(Color.alpha(0));
+                    arrayExtrasAux.remove(extra);
                 }
             }
         });
@@ -89,4 +95,24 @@ public class Presupuesto extends AppCompatActivity {
 
         
     }
+
+    private View.OnClickListener mCorkyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == findViewById(R.id.fbaGenerarResumen).getId()) {//Si pulsamos en siguiente
+                presupuestos.setId(coche.getId());
+                presupuestos.setMarca(coche.getMarca());
+                presupuestos.setModelo(coche.getModelo());
+                presupuestos.setPrecio(Float.parseFloat(txvPrecioPre.getText().toString()));
+                presupuestos.setArrayExtras(arrayExtrasAux);
+
+               // Intent intent = new Intent(this,);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("presupuesto",presupuestos);
+              //  intent.putExtra("presupuesto",bundle);
+
+
+            }
+        }
+    };
 }
