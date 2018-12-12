@@ -98,8 +98,6 @@ public class ResumenPresupuesto extends AppCompatActivity implements Dialogo.Dia
         }
         contenido = contenido+"\nEl precio total de su factura asciende a "+txvPrecioResumen.getText().toString();
 
-
-
         emailIntent.putExtra(Intent.EXTRA_TEXT, contenido);
 
         startActivity(Intent.createChooser(emailIntent, "Formulario del cliente con su pedido"));

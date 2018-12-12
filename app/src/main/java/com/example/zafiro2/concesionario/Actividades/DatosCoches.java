@@ -2,10 +2,12 @@ package com.example.zafiro2.concesionario.Actividades;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,13 +21,14 @@ import android.widget.ImageView;
 
 import com.example.zafiro2.concesionario.BaseDatos.DatabaseAccess;
 import com.example.zafiro2.concesionario.Objetos.Coches;
+import com.example.zafiro2.concesionario.Objetos.Dialogo;
 import com.example.zafiro2.concesionario.R;
 
 import java.io.ByteArrayInputStream;
 
 import static android.view.View.VISIBLE;
 
-public class DatosCoches extends AppCompatActivity {
+public class DatosCoches extends AppCompatActivity implements Dialogo.DialogoEmergente {
 
     ImageView imvCoche;
     EditText edtDatosMarca;
@@ -63,6 +66,8 @@ public class DatosCoches extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         if(id[1]==0) {
             menuInflater.inflate(R.menu.menu_datos_coche_nuevo, menu);
+        }else {
+            menuInflater.inflate(R.menu.menu_datos_coche_ocasion,menu);
         }
         return true;
     }
@@ -100,11 +105,16 @@ public class DatosCoches extends AppCompatActivity {
 
                 break;
             case R.id.mGenerarPresupuesto:
-                    Intent intent = new Intent(this,Presupuesto.class);
+
+                    Intent intent = new Intent(this, Presupuesto.class);
                     intent.putExtra("coche", cocheAEnviar);
                     startActivity(intent);
-                break;
+                    break;
 
+            case R.id.enviarCorreoSeminuevo:
+
+               new Dialogo(this,DatosCoches.this);
+                break;
         }//fin switch*/
 
         return super.onOptionsItemSelected(item);
@@ -181,10 +191,6 @@ public class DatosCoches extends AppCompatActivity {
                     setResult(RESULT_OK, null);
                     finish();
                 }
-                if(id[1]==1){
-                    
-                }
-
             }
         }
     };
@@ -197,5 +203,25 @@ public class DatosCoches extends AppCompatActivity {
         databaseAccess.close();
         setResult(RESULT_OK, null);
         finish();
+    }
+
+    @Override
+    public void ResultadoDialogo(String nombre, String apellidos, String email, int telefono, String poblacion, String direccion) {
+        String[] TO = {email};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, "");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Formulario del cliente con su pedido");
+
+        String contenido = "Estimado "+nombre+" "+apellidos+"\nAdjuntamos el presupuesto que usted solicito:\n\t"+coche.getMarca()+" "+coche.getModelo()+"\n\n";
+
+
+        contenido = contenido+"\nEl precio total de su factura asciende a "+Float.toString(coche.getPrecio())+"€";
+
+        emailIntent.putExtra(Intent.EXTRA_TEXT, contenido);
+
+        startActivity(Intent.createChooser(emailIntent, "Formulario del cliente con su pedido"));
     }
 }
