@@ -28,7 +28,7 @@ public class Dialogo {
 
     private DialogoEmergente interfaz;
 
-    public Dialogo(Context context, View.OnClickListener actividad) {
+    public Dialogo(Context context, DialogoEmergente actividad) {
 
         interfaz = actividad;
 
@@ -66,6 +66,7 @@ public class Dialogo {
             }
         });
 
+        dialogo.show();
     }
 
 
