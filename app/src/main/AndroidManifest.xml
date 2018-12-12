@@ -51,7 +51,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".Actividades.Presupuesto" />
-        <activity android:name=".ResumenPresupuesto" />
+        <activity android:name=".Actividades.ResumenPresupuesto" />
         <activity
             android:name=".Conocenos"
             android:label="@string/title_activity_conocenos"></activity>

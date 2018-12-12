@@ -17,7 +17,6 @@ import com.example.zafiro2.concesionario.Objetos.Coches;
 import com.example.zafiro2.concesionario.Objetos.Extras;
 import com.example.zafiro2.concesionario.Objetos.Presupuestos;
 import com.example.zafiro2.concesionario.R;
-import com.example.zafiro2.concesionario.ResumenPresupuesto;
 
 import java.util.ArrayList;
 
